@@ -44,14 +44,14 @@ public class ColorCalculator
     {
         Color color = new Color(0, 0, 0);
         //from int to float from 256 to 0 - 1
-        float xCoord = (float)x / width * scale + offsetX * -0.5f; //with directional vector
-        float yCoord = (float)y / height * scale + offsetY * -0.6f; // with directional vector
+        float xCoord = (float)x / width * scale + offsetX * -0.9f; //with directional vector
+        float yCoord = (float)y / height * scale + offsetY * -0.1f; // with directional vector
         //float xCoord = (float)x / width * scale + offsetX;
         //float yCoord = (float)y / height * scale + offsetY;
         //float sample = Mathf.PerlinNoise(xCoord, yCoord);
 
         //screw - new pos from old position
-        float yCoord2 = (float)y / height * scale + offsetY * -1;
+        float yCoord2 = (float)y / height * scale + offsetY * -4;
         Vector2 newPos = new Vector2(Mathf.PerlinNoise(xCoord, yCoord), Mathf.PerlinNoise(xCoord, yCoord2));
         float sample2 = Mathf.PerlinNoise(newPos.x, newPos.y);
 
@@ -67,7 +67,7 @@ public class ColorCalculator
             if (sample3 < 0.35f)
             {
                 //return Color.cyan;
-                return new Color(0, 1, 1, 0.15f);
+                return new Color(0.0f, 1.0f, 0f, 0.05f);
             }
             else
             {
@@ -78,39 +78,47 @@ public class ColorCalculator
 
         else
         {
+           return Color.Lerp(new Color(1.0f, 0.0f, 0f, 0.5f), new Color(0.0f, 1.0f, 0f, 0.5f), sample2*2);
+          
+            
             //return new Color(sample2, sample2, sample2);
+            /* 
             if (sample2 < 0.1f)
-            {
-                return Color.black;
-            }
-            else if (sample2 < 0.2f)
-            {
-                return new Color(0.2f, 0.2f, 0.2f);
-            }
-            else if (sample2 < 0.3f)
-            {
-                return new Color(0.3f, 0.3f, 0.3f);
-            }
-            else if (sample2 < 0.4f)
-            {
-                return new Color(0.4f, 0.4f, 0.4f);
-            }
-            else if (sample2 < 0.5f)
-            {
-                return new Color(0.5f, 0.5f, 0.5f);
-            }
-            else if (sample2 < 0.8f)
-            {
-                return new Color(0.8f, 0.8f, 0.8f);
-            }
-            else
-            {
+             {
+                 return Color.red;
+             }
+             else if (sample2 < 0.2f)
+             {
+                 return new Color(0.8f, 0.2f, 0.2f);
+             }
+             else if (sample2 < 0.3f)
+             {
+                 //return new Color(0.3f, 0.3f, 0.3f);
+                 return Color.yellow;
+             }
+             else if (sample2 < 0.4f)
+             {
+                 //return new Color(0.4f, 0.4f, 0.4f);
+                 return Color.green;
+             }
+             else if (sample2 < 0.5f)
+             {
+                 //return new Color(0.5f, 0.5f, 0.5f);
+                 return Color.magenta;
+             }
+             else if (sample2 < 0.8f)
+             {
+                 //return new Color(0.8f, 0.8f, 0.8f);
+                 return Color.cyan;
+             }
+             else
+             {
 
-                return Color.white;
-            }
-
-
-            //return new Color(sample2, sample2, sample2);
+                 return Color.white;
+             }
+            
+            */
+  
         }
     }
 }

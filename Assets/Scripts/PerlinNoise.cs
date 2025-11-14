@@ -1,9 +1,11 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PerlinNoise : MonoBehaviour
 {
     public Renderer Renderer;
+    public RawImage image;
     //public TextMeshProUGUI txt;
     public FilterMode FilterMode;
     public int width;
@@ -29,7 +31,7 @@ public class PerlinNoise : MonoBehaviour
 
     private void Start()
     {
-        Renderer = GetComponent<Renderer>();
+        //Renderer = GetComponent<Renderer>();
         timer = 0f;
         //hours = 0;
     }
@@ -40,7 +42,7 @@ public class PerlinNoise : MonoBehaviour
 
         if(timer < 0f)
         {
-            Renderer.material.mainTexture = TextureGenerator.Generate(width, height, offsetX, offsetY, scale, FilterMode);
+            image.texture = TextureGenerator.Generate(width, height, offsetX, offsetY, scale, FilterMode);
             timer = frequencyUpdate;
             offsetY += offsetYAdd;
             offsetX += offsetXAdd;
