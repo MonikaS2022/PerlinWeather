@@ -13,6 +13,8 @@ public class PerlinNoise : MonoBehaviour
 
     public float offsetX;
     public float offsetY;
+    public float offsetXAdd;
+    public float offsetYAdd;
 
     /*
     [Range(0f, 1f)]
@@ -21,7 +23,8 @@ public class PerlinNoise : MonoBehaviour
     public float border2 = 0f;
     */
 
-    float timer;
+    public float timer;
+    public float frequencyUpdate;
     int hours;
 
     private void Start()
@@ -38,13 +41,13 @@ public class PerlinNoise : MonoBehaviour
         if(timer < 0f)
         {
             Renderer.material.mainTexture = TextureGenerator.Generate(width, height, offsetX, offsetY, scale, FilterMode);
-            timer = 0.5f;
-            //offsetY += 0.02f;
-            //offsetX += 0.04f;
-            //hours += 1;
+            timer = frequencyUpdate;
+            offsetY += offsetYAdd;
+            offsetX += offsetXAdd;
+            hours += 1;
         }
 
-        //hours %= 24;
+        hours %= 24;
         //txt.text = hours.ToString();
     }
 

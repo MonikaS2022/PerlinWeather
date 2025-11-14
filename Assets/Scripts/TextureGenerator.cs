@@ -13,7 +13,9 @@ public class TextureGenerator
         {
             for(int y = 0; y < height; y++)
             {
-                Color color = ColorCalculator.Perlin2DirectionsScrew(width, height, x, y, offsetX, offsetY, scale);
+                //Color color = ColorCalculator.Perlin2DirectionsScrew(width, height, x, y, offsetX, offsetY, scale);
+                Color color = ColorCalculator.CalculateColor(width, height, x, y, offsetX, offsetY, scale);
+
                 texture.SetPixel(x, y, color);
             }
         }
